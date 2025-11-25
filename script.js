@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ----------------------------------------
      Sistema de Alerta para "Ver Más" (en botones genéricos)
-  ----------------------------------------- */
+  ----------------------------------------- 
   // Este script se aplica a botones que no tienen una acción específica de scroll.
   // Asegúrate de que no interfiera con los botones de scroll.
   document.querySelectorAll(".card button:not([data-scroll-to])").forEach(button => {
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
       alert("Aquí puedes cargar un modal con información ampliada.");
     });
   });
-
+*/ /* Esta parte se desactiva de momento */
 /* ----------------------------------------
    Navbar - Cambio de Opacidad al Desplazar
 ----------------------------------------- */
@@ -131,3 +131,4 @@ window.addEventListener("scroll", () => {
 window.populateDemo = function(payload = {}) {
   console.log('populateDemo called', payload);
 };
+
