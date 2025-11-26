@@ -1,0 +1,440 @@
+/* ------------------------
+   Design tokens (from JSON)
+   ------------------------ */
+:root{
+  /* Colors */
+  --color-primary-main: #0A7A75;
+  --color-primary-light: #36AFAA;
+  --color-primary-dark: #065A57;
+  --color-secondary-main: #0E2F3A; /* Este es el color base, pero lo sobrescribiremos para el footer */
+  --color-secondary-light: #2F4F5A;
+  --color-secondary-dark: #091E24;
+  --bg-main: #FFFFFF;
+  --bg-soft: #F5F7F7;
+  --text-primary: #0E2F3A;
+  --text-secondary: #4A5A61;
+  --text-inverse: #FFFFFF;
+  --accent-success: #32C98D;
+  --accent-highlight: #0A7A75;
+
+  /* Typograhy */
+  --font-family: "ModernSans", "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --hero-title-size: 48px;
+  --title1-size: 32px;
+  --title2-size: 24px;
+  --subtitle-size: 18px;
+  --body-size: 16px;
+  --small-size: 14px;
+
+  /* Layout */
+  --max-width: 1300px;
+  --gutter: 24px;
+  --radius-card: 14px;
+  --radius-btn: 8px;
+  --shadow-soft: 0 6px 24px rgba(0,0,0,0.08);
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 64px;
+
+  --transition-fast: 0.25s ease;
+  --hover-lift-amount: 3px;
+}
+
+/* ------------------------
+   Base
+   ------------------------ */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--font-family);
+  background:var(--bg-soft);
+  color:var(--text-primary);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+  font-size:var(--body-size);
+  padding-bottom: 220px; /* Aumentado para asegurar espacio al footer fijo */
+}
+
+.container{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:0 var(--gutter);
+}
+
+/* Nueva clase para un contenedor más ancho */
+.container-wider{
+  max-width: 1600px; /* Aumenta el ancho máximo */
+  margin:0 auto;
+  padding:0 var(--gutter);
+}
+
+
+/* ------------------------
+   Navbar / Hero
+   ------------------------ */
+header.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(8px);
+
+  /* Fondo negro con 75% de transparencia */
+  background: rgba(0, 0, 0, 0.75);
+
+  border-bottom: 1px solid rgba(14,47,58,0.06);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+}
+.nav-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:var(--text-inverse);
+  margin-left:4px;
+}
+.brand .logo{
+  width:44px;height:44px;border-radius:8px;background:var(--color-primary-main);
+  display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--text-inverse);
+  box-shadow: var(--shadow-soft);
+}
+.nav-links{
+  display:flex;
+  gap:20px;
+  align-items:center;
+}
+.nav-links a{
+  color:var(--text-inverse);
+  text-decoration:none;
+  font-weight:500;
+  padding:8px 10px;
+  border-radius:6px;
+  transition:color var(--transition-fast), transform var(--transition-fast);
+}
+.nav-links a:hover{ color:var(--color-primary-light); transform:translateY(-2px) }
+.nav-links a.active{ color:var(--color-primary-light); } /* Added for active state */
+
+
+/* Hero */
+.hero{
+  position:relative;
+  height:40vh;
+  min-height:360px;
+  margin-top:12px;
+  overflow:hidden;
+  border-radius:18px;
+}
+
+.hero2{
+  position:relative;
+  height:30vh;
+  min-height:360px;
+  margin-top:12px;
+  overflow:hidden;
+  border-radius:18px;
+}
+
+.hero .bg{
+  position:absolute;
+  inset:0;
+  background-position:center;
+  background-size:cover;
+  filter: saturate(95%);
+  transform: scale(1.02);
+}
+/* overlay to apply the teal dark tint */
+.hero::before{
+  content:"";
+  position:absolute;inset:0;
+  background: rgba(14,47,58,0.55);
+  mix-blend-mode: overlay;
+}
+
+.hero2 .bg{
+  position:absolute;
+  inset:0;
+  background-position:center;
+  background-size:cover;
+  filter: saturate(95%);
+  transform: scale(1.02);
+}
+/* overlay to apply the teal dark tint */
+.hero2::before{
+  content:"";
+  position:absolute;inset:0;
+  background: rgba(0, 255, 128, 0.55);;
+  mix-blend-mode: overlay;
+}
+
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  align-items:center;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1fr 420px;
+  gap:24px;
+  align-items:center;
+  width:100%;
+}
+.hero-text h1{
+  margin:0 0 12px 0;
+  color:var(--text-inverse);
+  font-size:calc(var(--hero-title-size));
+  line-height:1.02;
+  font-weight:700;
+  letter-spacing:-0.5px;
+}
+.hero-text p{
+  margin:0 0 var(--space-md) 0;
+  color:rgba(255,255,255,0.92);
+  font-size:var(--subtitle-size);
+  max-width:680px;
+}
+.hero-cta{
+  display:flex;gap:12px;flex-wrap:wrap;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 18px;
+  border-radius:var(--radius-btn);
+  border:0;
+  cursor:pointer;
+  font-weight:600;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  box-shadow: 0 6px 18px rgba(10,122,117,0.08);
+}
+.btn-primary{
+  background:var(--color-primary-main);
+  color:var(--text-inverse);
+}
+.btn-ghost{
+  background:transparent;
+  color:var(--text-inverse);
+  border:1px solid rgba(255,255,255,0.12);
+}
+.btn:hover{ transform: translateY(-3px) }
+
+.hero-card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.95) 50%, rgba(255,255,255,0.92) 100%);
+  border-radius:14px;
+  padding:18px;
+  box-shadow:var(--shadow-soft);
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+.hero-avatar{
+  width:88px;height:88px;border-radius:12px;overflow:hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+.hero-avatar img{ width:100%;height:100%;object-fit:cover;display:block }
+
+/* ------------------------
+   Quick buttons
+   ------------------------ */
+.quick-actions{
+  margin-top: -46px; /* floats above cards area as in reference */
+  display:flex;
+  gap:12px;
+  justify-content:flex-start;
+  padding-bottom:0;
+}
+.quick-btn{
+  background:var(--bg-main);
+  border-radius:12px;
+  padding:12px 16px;
+  box-shadow:var(--shadow-soft);
+  display:flex;
+  gap:12px;
+  align-items:center;
+  cursor:pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  border:1px solid rgba(14,47,58,0.04);
+  text-decoration: none; /* Ensure quick-btn links don't have underlines */
+  color: var(--text-primary); /* Ensure text color is correct for links */
+}
+.quick-btn:hover{ transform: translateY(-4px) }
+
+/* ------------------------
+   Main grid (cards)
+   ------------------------ */
+main{
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+.cards-grid{
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap:var(--gutter);
+  align-items:start;
+}
+
+/* Card utility */
+.card{
+  background:var(--bg-main);
+  border-radius:var(--radius-card);
+  padding:20px;
+  box-shadow:var(--shadow-soft);
+  border: 1px solid rgba(14,47,58,0.03);
+}
+.card h3{
+  margin:0 0 10px 0;
+  font-size:var(--title2-size);
+  color:var(--text-primary);
+  font-weight:600;
+}
+.card .muted{ color:var(--text-secondary); font-size:var(--small-size) }
+
+/* Layout specifics: columns */
+/* Left column: profile (4 cols) center: main content (5 cols) right: small cards (3 cols) */
+.col-4{ grid-column: span 4; }
+.col-5{ grid-column: span 5; }
+.col-3{ grid-column: span 3; }
+.col-12{ grid-column: span 12; }
+
+
+/* Profile card specifics */
+.profile{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  align-items:flex-start;
+}
+.profile .photo{
+  width:120px;height:120px;border-radius:12px;overflow:hidden;
+  box-shadow:0 8px 20px rgba(0,0,0,0.06);
+}
+.profile .photo img{ width:100%;height:100%;object-fit:cover;display:block }
+.profile .meta{ display:flex;flex-direction:column;gap:6px }
+.profile .meta .name{ font-size:20px;font-weight:700;color:var(--text-primary) }
+.profile .meta .role{ color:var(--color-primary-dark); font-weight:600 }
+.profile .stats{ display:flex;gap:12px; margin-top:6px; flex-wrap:wrap }
+.badge{ background:linear-gradient(180deg,var(--color-primary-light),var(--color-primary-main)); color:var(--text-inverse); padding:6px 10px;border-radius:999px;font-weight:600; font-size:13px }
+
+/* Studies & Experience list */
+.list-item{ display:flex;gap:12px;padding:10px 0;border-top:1px dashed rgba(14,47,58,0.04) }
+.list-item:first-of-type{ border-top:0 }
+.list-item .meta small{ display:block;color:var(--text-secondary) }
+
+/* Portfolio cards (grid mode) */
+.portfolio-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr); /* Tres columnas para el modo de malla */
+  gap:var(--gutter); /* Espacio entre los ítems del portafolio */
+  margin-top:12px;
+}
+.portfolio-item{
+  background:var(--bg-main); /* Cada ítem es una tarjeta distinta */
+  border-radius:var(--radius-card);
+  padding:20px;
+  box-shadow:var(--shadow-soft);
+  border:1px solid rgba(14,47,58,0.03);
+  display:flex; /* Usar flexbox para alinear contenido dentro de cada ítem */
+  flex-direction: column; /* Imagen arriba, texto abajo */
+  gap:10px;
+  align-items: center; /* Centrar el contenido horizontalmente */
+  text-align: center; /* Centrar el texto */
+  height: 100%; /* Asegura que todos los ítems en una fila tengan la misma altura */
+  justify-content: space-between; /* Distribuye el espacio verticalmente */
+}
+.portfolio-thumb{
+  width: 100%; /* La imagen ocupa todo el ancho del ítem */
+  height:180px; /* Altura fija para las miniaturas en la cuadrícula */
+  border-radius:8px;
+  overflow:hidden;
+  flex-shrink:0;
+  margin-bottom: 10px; /* Espacio debajo de la imagen */
+}
+.portfolio-thumb img{ width:100%;height:100%;object-fit:cover; } /* Cambiado a 'cover' para llenar el espacio */
+
+/* Other competencies as chips */
+.chips{ display:flex;gap:10px;flex-wrap:wrap;margin-top:12px }
+.chip{ padding:8px 12px;border-radius:999px;border:1px solid rgba(14,47,58,0.06); font-weight:600; background:transparent }
+
+/* Right small cards */
+.small-card{ padding:16px; text-align:left }
+.small-card .value{ font-size:22px;font-weight:700;color:var(--color-primary-main) }
+
+/* Footer */
+footer{
+  background: rgba(14, 47, 58, 0.5); /* Color base #0E2F3A con 50% de transparencia */
+  color:var(--text-inverse);
+  padding:15px 0;
+  position: down; /* Fija el footer a la ventana */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100; /* Asegura que esté por encima de otros contenidos */
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1); /* Sombra sutil en la parte superior */
+}
+footer .foot-row{ display:flex;align-items:center;justify-content:space-between; gap:15px }
+footer p{ margin:0; color:rgba(255,255,255,0.9) }
+
+/* ------------------------
+   Responsive
+   ------------------------ */
+@media (min-width: 1600px) { /* Cuando el viewport es más ancho que 1600px, limita el contenedor */
+  .container-wider {
+    max-width: 1600px;
+  }
+}
+@media (max-width: 1600px) and (min-width: 1101px) { /* Entre 1101px y 1600px, usa un porcentaje */
+  .container-wider {
+    max-width: 90%; /* Ajusta según sea necesario, por ejemplo, 90% del ancho del viewport */
+  }
+}
+
+@media (max-width:1100px){
+  .hero-grid{ grid-template-columns: 1fr 320px }
+  .col-4{ grid-column: span 12; }
+  .col-5{ grid-column: span 12; }
+  .col-3{ grid-column: span 12; }
+  .portfolio-grid{
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas medianas */
+  }
+  .portfolio-thumb{
+    height: 150px; /* Altura ligeramente menor para pantallas medianas */
+  }
+  /* Ajusta también container-wider para pantallas más pequeñas */
+  .container-wider {
+    max-width: var(--max-width); /* Vuelve al max-width por defecto en pantallas más pequeñas */
+  }
+  .hero{ height:56vh }
+}
+@media (max-width:640px){
+  .nav-links{ display:none }
+  .hero-grid{ grid-template-columns: 1fr }
+  .hero .bg{ transform: scale(1.08) }
+  .hero-text h1{ font-size:32px }
+  .hero{ min-height:300px }
+  .portfolio-grid{
+    grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+  }
+  .portfolio-thumb{
+    height: 180px; /* Altura ajustada para una sola columna en móviles */
+  }
+}
+
+/* small helpers */
+.muted-small{ color:var(--text-secondary); font-size:13px }
+.text-right{ text-align:right }

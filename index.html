@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard Educativo — Perfil</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Enlace al nuevo archivo CSS -->
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="brand" aria-hidden="true">
+          <div class="logo">JSBC</div>
+          <div style="color:var(--text-inverse)">
+            <div style="font-weight:700">Mi Curriculum Vitae</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.8)">Bienvenido a explorar mi perfil profesional</div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="nav-links" aria-label="Navegación rápida">
+        <a href="#hero-title">Perfil</a>
+        <a href="#estudios">Estudios</a>
+        <a href="exp.html">Experiencia</a>
+        <a href="portfolio.html">Portafolio</a> <!-- Enlace a la nueva página -->
+        <a href="#otras">Competencias</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero container" aria-labelledby="hero-title">
+    <!-- Use uploaded image as background (local path provided) -->
+  <div class="bg" style="
+   background: linear-gradient(
+    135deg,
+    #000000 20%,
+    #003300 40%,
+    #00cc66 60%,
+    #00ff99 70%,
+    #003300 85%,
+    #000000 100%
+);"
+"></div>
+
+
+    <div class="hero-content container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <h1 id="hero-title">Resumen de perfil</h1>
+          <p>Profesional técnico con diferentes habilidades tecnológicas adquiridas por la demanda del momento, caracterizado por ser bastante flexible a la situación y un pensamiento creativo que se adapta según el requerimiento.</p>
+
+          <div class="hero-cta" role="toolbar" aria-label="Acciones rápidas">
+            <button class="btn btn-primary" data-scroll-to="#estudios">Ver estudios</button>
+            <a href="portfolio.html" class="btn btn-ghost">Ver portafolio</a> <!-- Enlace a la nueva página -->
+            <button class="btn" style="background:var(--accent-success);color:#fff" data-scroll-to="#experiencia">Contactar</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="hero-card" aria-hidden="false">
+            <div class="hero-avatar">
+              <!-- Reusing the same image as avatar; in real usage replace with profile photo -->
+              <img src="Media/Perfil.jpg" alt="Avatar">
+            </div>
+            <div>
+              <div style="font-weight:700;font-size:16px;color:var(--text-primary)">Josseph Bolsios Cortés</div>
+              <div class="muted">Técnico en Soporte</div>
+              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+                <span class="badge">Educación</span>
+                <span class="badge" style="background:linear-gradient(180deg,var(--color-secondary-light),var(--color-secondary-main))">Certificaciones</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick action floating cards -->
+  <div class="container quick-actions" style="margin:12px;">
+    <a class="quick-btn" data-scroll-to="#info" title="Ir al perfil">
+      <div style="width:36px;height:36px;border-radius:8px;background:var(--color-primary-main);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">I</div>
+      <div>
+        <div style="font-weight:700">Información</div>
+        <div class="muted-small">Resumen rápido</div>
+      </div>
+    </a>
+
+    <a class="quick-btn" data-scroll-to="#estudios" title="Ver estudios">
+      <div style="width:36px;height:36px;border-radius:8px;background:var(--color-secondary-main);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">E</div>
+      <div>
+        <div style="font-weight:700">Estudios</div>
+        <div class="muted-small">Certificados y cursos</div>
+      </div>
+    </a>
+
+    <a href="portfolio.html" class="quick-btn" title="Ir al portafolio"> <!-- Enlace a la nueva página -->
+      <div style="width:36px;height:36px;border-radius:8px;background:var(--accent-success);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">P</div>
+      <div>
+        <div style="font-weight:700">Portafolio</div>
+        <div class="muted-small">Evidencias</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- MAIN GRID -->
+  <main class="container">
+    <section class="cards-grid" aria-label="Contenido principal">
+
+      <!-- LEFT: Perfil -->
+      <aside class="card col-4" id="info" aria-labelledby="perfil-title">
+        <h3 id="perfil-title">Información general del perfil</h3>
+        <div class="profile">
+          <div class="photo" aria-hidden="true">
+            <img src="Media/Perfil.jpg" alt="Foto de perfil">
+          </div>
+
+          <div class="meta">
+            <div class="name">Josseph Bolsios Cortés</div>
+            <div class="role">Técnico en Soporte</div>
+            <div class="muted">Oreamuno de Cartago</div>
+          </div>
+
+          <div class="stats">
+            <div class="card small-card" style="display:inline-block;">
+              <div class="muted-small">Experiencia freelancer</div>
+              <div class="value">5 años</div>
+            </div>
+
+            <div class="card small-card" style="display:inline-block;">
+              <div class="muted-small">Experiencia laboral</div>
+              <div class="value">11 meses</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <div class="muted-small">Resumen</div>
+            <p class="muted" style="margin:6px 0 0 0">Profesional con experiencia electróncia y soporte en tecnologías de la información. Capacidad para diseñar recursos, herrramientas y materiales de apoyo.</p>
+          </div>
+
+         <div style="margin-top:12px">
+  <a href="https://drive.google.com/file/d/1h7nzQuSDweQC17CEWghMmOxnjyB45TIh/view?usp=sharing" target="_blank" style="text-decoration:none;">
+    <button class="btn btn-primary" style="width:100%">Descargar CV</button>
+  </a>
+</div>
+        </div>
+      </aside>
+
+      <!-- CENTER: Estudios y Experiencia (larger) -->
+      <section class="col-5" aria-live="polite">
+        <!-- Cards stack vertically -->
+        <div class="card" id="estudios" aria-labelledby="estudios-title">
+          <h3 id="estudios-title">Estudios y certificaciones</h3>
+          <div class="muted-small">Títulos académicos, cursos y certificaciones relevantes</div>
+
+
+          <div style="margin-top:12px">
+            <div class="list-item">
+              <div style="flex:1">
+                <div style="font-weight:700">Técnico en redes y telecomunicaciones</div>
+                <div class="muted">Universidad Juan Pablo II 2019 - 2020  </div>
+                <small class="muted-small">• Cisco CCNAv3 2020.<br> • </small>
+                <small class="muted-small">Fundamentos de las telecomunicaciones empresariales.<br> • </small>
+                <small class="muted-small">Fundamentos de la Ciberseguridad.<br> • </small>
+                <small class="muted-small">Fundamentos de IoT y IT.</small>
+              </div>
+            </div>
+
+            <div class="list-item">
+              <div style="flex:1">
+                <div style="font-weight:700">Técnico en electrónica en telecomunicaciones</div>
+                <div class="muted">COVAO Nocturno • 2022 - 2024</div>
+                <small class="muted-small">Fundamentos de electrónica y su implementación en el área de telecomunicaciones</small>
+              </div>
+            </div>
+
+            <div class="list-item">
+              <div style="flex:1">
+                <div style="font-weight:700">Certificado: UNP</div>
+                <div class="muted">SEKUNET S.A • 2025</div>
+                <small class="muted-small">Fundamentos de Unifi Site Manager y sistemas Ubiquiti</small>
+              </div>
+            </div>
+
+             <div class="list-item">
+              <div style="flex:1">
+                <div style="font-weight:700">Certificado: HSCA Hikvision</div>
+                <div class="muted">SEKUNET S.A • 2025</div>
+                <small class="muted-small">Fundamentos de sistemas CCTV & Intercom Hikvision</small>
+              </div>
+            </div>
+
+            <div class="list-item">
+              <div style="flex:1">
+                <div style="font-weight:700">Certificado ZKTECO: Control de acceso y tiempo y asistencia</div>
+                <div class="muted">SEKUNET S.A • 2025</div>
+                <small class="muted-small">Fundamentos de sistemas de la marca y su implementación</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: Otras competencias y Indicadores -->
+      <aside class="col-3">
+        <!-- La sección de Portafolio ha sido movida a portfolio.html -->
+
+        <div class="card" id="otras" aria-labelledby="otras-title"> <!-- Eliminado style="margin-top:18px" para que suba si es el primer elemento -->
+          <h3 id="otras-title">Otras competencias</h3>
+          <div class="muted-small">Habilidades complementarias</div>
+
+          <div class="chips">
+            <div class="chip">Liderazgo</div>
+            <div class="chip">Diseño 3D</div>
+            <div class="chip">Impresión 3D</div>
+            <div class="chip">Desarrollo de herramientas</div>
+            <div class="chip">Planificación</div>
+          </div>
+
+          <div style="margin-top:12px">
+            <div class="muted-small">Idiomas</div>
+            <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+              <div class="chip">Español — Nativo</div>
+              <div class="chip">Inglés — Intermedio</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:18px">
+          <h3>Contacto</h3>
+          <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div class="muted-small">Correo</div>
+              <div style="font-weight:700">bolsios2007@gmail.com</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div class="muted-small">Celular</div>
+              <div style="font-weight:700">+506 7158-4923</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+   <footer>
+    <div class="container">
+      <div class="foot-row">
+        <p>© <strong>MiCV</strong> — Panel informativo</p>
+        <p class="muted-small">Diseñado con IA y personalizado con habilidad humana</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
