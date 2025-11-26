@@ -428,15 +428,32 @@ footer p{ margin:0; color:rgba(255,255,255,0.9) }
   .hero-grid{ grid-template-columns: 1fr }
   .hero .bg{ transform: scale(1.08) }
   .hero-text h1{ font-size:32px }
-  .hero{ min-height:300px }
-  .portfolio-grid{
-    grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+  
+  /* Modificaciones para el .hero en vista móvil */
+  .hero{
+    height: auto; /* Permitir que la altura se adapte al contenido */
+    min-height: 220px; /* Un mínimo más pequeño para asegurar visibilidad */
+    margin-top: 0; /* Eliminar el margen superior para que se pegue a la navbar */
+    padding-top: var(--space-md); /* Añadir padding interno superior */
+    padding-bottom: var(--space-md); /* Añadir padding interno inferior */
+    border-radius: 0 0 18px 18px; /* Redondear solo la parte inferior */
   }
-  .portfolio-thumb{
-    height: 180px; /* Altura ajustada para una sola columna en móviles */
+  /* Asegurar que el contenido del hero se alinee al inicio */
+  .hero-content {
+    align-items: flex-start; /* Alinear el contenido del hero a la parte superior */
+  }
+
+  /* Asegurar que los botones de acción rápida se centren y se envuelvan */
+  .quick-actions{
+    margin-top: var(--space-md); /* Mantener un margen positivo después del hero */
+    margin-bottom: var(--space-lg);
+    justify-content: center; /* Centrar los botones horizontalmente */
+    flex-wrap: wrap; /* Permitir que los botones se envuelvan en varias líneas */
   }
 }
+
 
 /* small helpers */
 .muted-small{ color:var(--text-secondary); font-size:13px }
 .text-right{ text-align:right }
+
