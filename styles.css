@@ -253,12 +253,14 @@ header.navbar {
    Quick buttons
    ------------------------ */
 .quick-actions{
-  margin-top: -46px; /* floats above cards area as in reference */
+  margin-top: var(--space-md);    /* Espacio entre el hero y los botones rápidos (ej. 24px) */
+  margin-bottom: var(--space-lg); /* Espacio entre los botones rápidos y el contenido principal (ej. 40px) */
   display:flex;
   gap:12px;
   justify-content:flex-start;
   padding-bottom:0;
 }
+
 .quick-btn{
   background:var(--bg-main);
   border-radius:12px;
