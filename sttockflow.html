@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Video - Proyecto StockFlow Pro +</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      background: var(--bg-soft);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: var(--font-family);
+      color: var(--text-primary);
+    }
+    video {
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 12px;
+      box-shadow: var(--shadow-soft);
+    }
+    .btn-back {
+      margin-top: 24px;
+      padding: 12px 20px;
+      background: var(--color-primary-main);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-btn);
+      cursor: pointer;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+    .btn-back:hover {
+      background: var(--color-primary-light);
+    }
+  </style>
+</head>
+<body>
+  <h1>Proyecto StockFlow Pro +</h1>
+  <video controls autoplay muted playsinline>
+    <source src="Media/video-stockflow.mp4" type="video/mp4" />
+    Tu navegador no soporta la reproducción de video.
+  </video>
+  <a href="exp.html" class="btn-back" title="Volver a Experiencia">← Volver a Experiencia</a>
+</body>
+</html>
