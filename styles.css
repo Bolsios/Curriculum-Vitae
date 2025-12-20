@@ -14,8 +14,8 @@
   --text-primary: #0E2F3A;
   --text-secondary: #4A5A61;
   --text-inverse: #FFFFFF;
-  --accent-success: #32C98D;
-  --accent-highlight: #0A7A75;
+  --accent-success: #371211;
+  --accent-highlight: #7D1416;
 
   /* Typograhy */
   --font-family: "ModernSans", "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -456,5 +456,6 @@ footer p{ margin:0; color:rgba(255,255,255,0.9) }
 /* small helpers */
 .muted-small{ color:var(--text-secondary); font-size:13px }
 .text-right{ text-align:right }
+
 
 
