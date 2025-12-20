@@ -3,9 +3,9 @@
    ------------------------ */
 :root{
   /* Colors */
-  --color-primary-main: #0A7A75;
-  --color-primary-light: #36AFAA;
-  --color-primary-dark: #065A57;
+  --color-primary-main: #75020f;
+  --color-primary-light: #51080d;
+  --color-primary-dark: #2b0307;
   --color-secondary-main: #0E2F3A; /* Este es el color base, pero lo sobrescribiremos para el footer */
   --color-secondary-light: #2F4F5A;
   --color-secondary-dark: #091E24;
@@ -456,4 +456,5 @@ footer p{ margin:0; color:rgba(255,255,255,0.9) }
 /* small helpers */
 .muted-small{ color:var(--text-secondary); font-size:13px }
 .text-right{ text-align:right }
+
 
