@@ -16,12 +16,27 @@
       margin: 0;
       font-family: var(--font-family);
       color: var(--text-primary);
+      padding: 20px;
+      box-sizing: border-box;
     }
-    video {
-      max-width: 90vw;
-      max-height: 80vh;
-      border-radius: 12px;
+    .video-container {
+      position:relative;
+      width:90vw;
+      max-width:960px;
+      height:0;
+      padding-bottom:56.25%;
+      margin: 0 auto;
+      border-radius:12px;
+      overflow:hidden;
       box-shadow: var(--shadow-soft);
+    }
+    .video-container iframe {
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      border:0;
     }
     .btn-back {
       margin-top: 24px;
@@ -43,10 +58,16 @@
 </head>
 <body>
   <h1>Proyecto StockFlow Pro +</h1>
-  <video controls autoplay muted playsinline>
-    <source src="https://www.youtube.com/watch?v=WAVrPaPDvGk" />
-    Tu navegador no soporta la reproducción de video.
-  </video>
-  <a href="portfolio.html" class="btn-back" title="Volver a Portafolio">← Volver a Portafolio</a>
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/watch?v=WAVrPaPDvGk" 
+      title="Proyecto StockFlow Pro +"
+      frameborder="0" 
+      allow="autoplay; encrypted-media; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+  <a href="exp.html" class="btn-back" title="Volver a Experiencia">← Volver a Experiencia</a>
 </body>
 </html>
+
