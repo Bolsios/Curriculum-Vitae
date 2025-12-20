@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Proyecto StockFlow Pro +</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: var(--font-family);
+      background: var(--bg-soft);
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Navbar igual que website */
+    header.navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.75);
+      border-bottom: 1px solid rgba(14,47,58,0.06);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      color: var(--text-inverse);
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .brand .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      background: var(--color-primary-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--text-inverse);
+      box-shadow: var(--shadow-soft);
+      margin-right: 12px;
+    }
+    nav.nav-links a {
+      color: var(--text-inverse);
+      text-decoration: none;
+      margin-left: 20px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      transition: color 0.25s ease, background 0.25s ease;
+    }
+    nav.nav-links a:hover,
+    nav.nav-links a.active {
+      color: var(--color-primary-light);
+      background: rgba(255 255 255 / 0.1);
+      text-decoration: underline;
+    }
+
+    /* Main content container */
+    main.content {
+      flex: 1;
+      max-width: var(--max-width);
+      margin: 40px auto 60px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* Video container */
+    .video-container {
+      border-radius: 12px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      background: #000;
+      max-height: 70vh;
+      max-width: 100%;
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 ratio */
+      height: 0;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
+    /* Description area */
+    .description {
+      font-size: 16px;
+      line-height: 1.5;
+      border-radius: 12px;
+      background: #fff;
+      padding: 28px 32px;
+      box-shadow: var(--shadow-soft);
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-weight: 500;
+    }
+    .description h2 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: var(--color-primary-main);
+      font-weight: 700;
+      font-size: 28px;
+      font-family: "ModernSans", "Inter", sans-serif;
+      letter-spacing: -0.5px;
+    }
+
+    /* Back button below main content */
+    .btn-back-container {
+      max-width: var(--max-width);
+      margin: 0 auto 40px;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .btn-back {
+      display: inline-block;
+      padding: 14px 28px;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: var(--radius-btn);
+      background: var(--color-primary-main);
+      color: white;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(10,122,117,0.3);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    .btn-back:hover,
+    .btn-back:focus {
+      background: var(--color-primary-light);
+      box-shadow: 0 8px 20px rgba(10,122,117,0.5);
+      outline: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      main.content {
+        grid-template-columns: 1fr;
+      }
+      .description {
+        margin-top: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar" role="banner">
+  <div class="nav-inner">
+    <div style="display:flex;align-items:center;">
+      <div class="brand" aria-hidden="true">
+        <div class="logo">CV</div>
+      </div>
+      <div>Proyecto StockFlow Pro +</div>
+    </div>
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="index.html">Perfil</a>
+      <a href="exp.html">Experiencia</a>
+      <a href="portfolio.html" class="active" aria-current="page">Portafolio</a>
+    </nav>
+  </div>
+</header>
+
+<main class="content" role="main">
+  <div class="video-container" aria-label="Video del Proyecto StockFlow Pro +">
+    <iframe 
+      src="https://drive.google.com/file/d/1fTHcKlFAt2_-aoSQEJoXy5Oms6AvF6WG/preview" 
+      allow="autoplay; encrypted-media" 
+      allowfullscreen 
+      title="Video StockFlow Pro +">
+    </iframe>
+  </div>
+  <section class="description" aria-labelledby="desc-title">
+    <h2 id="desc-title">Descripción del Proyecto</h2>
+    <p>
+      StockFlow Pro + es una aplicación de inventario escolar para sistemas Android, desarrollada para facilitar la gestión eficiente y precisa de los recursos educativos.
+      Esta solución tecnológica permite registrar entradas y salidas de inventarios en tiempo real, optimizando la administración y reduciendo errores manuales.
+    </p>
+    <p>
+      Integrando una interfaz intuitiva y funcionalidades robustas, StockFlow Pro + mejora la transparencia y control de materiales,
+      contribuyendo a una mayor productividad y organización dentro de las instituciones educativas.
+    </p>
+     <p>
+     Una de sus ventajas es su peso a nivel de sistema, puesto que no superaba los 10Mb, la razón de que la aplicación sea tan ligera es debido a su conectividad con formularios realizados en Drive, dependiendo únicamente de la conexión a internet.
+       Cabe destacar, que esta permitía tener una visualización de los datos ingresados y junto a eso, mediante un ordenador, el usuario tenía la capacidad de editar o auditar la data sin importar la ubicación geológica, mientras el dispositivo móvil actuaba como un simple escaner.
+    </p>
+     <p>
+   Esta aplicación fue desarrollada en AppInventor (desarrollado por el MIT), una plataforma de programación por bloques para proyectos pequeños como la integración de arduino, sin embargo, a pesar de su baja capacidad y limitantes presentes, se desarrolla esta aplicación que se considera bastante flexible puesto que combina verificación, suscripción y registro.
+    </p>
+  </section>
+</main>
+
+<div class="btn-back-container">
+  <a href="portfolio.html" class="btn-back" title="Volver a Portafolio">← Volver a Portafolio</a>
+</div>
+
+</body>
+</html>
