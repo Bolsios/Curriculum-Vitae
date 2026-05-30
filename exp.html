@@ -3,137 +3,102 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dashboard Educativo — Experiencia</title> <!-- Título corregido -->
-  <link rel="stylesheet" href="styles.css"> <!-- Enlace al CSS compartido -->
+  <title>Dashboard Educativo — Experiencia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;600;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Variables globales consistentes */
+    :root {
+      --acc: #ff6a00; 
+      --acc-alt: #00c6ff;
+      --bg: #090b10;
+      --bg2: #12161f;
+      --border: rgba(255, 255, 255, 0.06);
+      --text: #f0f2f5;
+      --text-muted: rgba(240, 242, 245, 0.5);
+      --nav-h: 72px;
+      --max-w: 1140px;
+    }
+    
+    body { font-family: 'Barlow', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+    .container { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    
+    /* Navbar y Layout */
+    header.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); background: rgba(9, 11, 16, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .logo { font-family: 'Barlow Condensed'; font-weight: 800; font-size: 18px; background: linear-gradient(135deg, var(--acc), var(--acc-alt)); color: #090b10; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 4px; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 12px; text-transform: uppercase; padding: 8px 16px; border-radius: 4px; transition: .3s; }
+    .nav-links a.active { color: #fff; background: rgba(255,255,255,0.05); border-bottom: 2px solid var(--acc); }
+
+    /* Hero */
+    .hero { padding-top: 140px; padding-bottom: 60px; }
+    .hero h1 { font-family: 'Barlow Condensed'; font-size: 48px; text-transform: uppercase; margin-bottom: 20px; }
+    .hero p { color: var(--text-muted); max-width: 700px; font-size: 18px; }
+
+    /* Tarjetas */
+    .card { background: var(--bg2); border: 1px solid var(--border); padding: 30px; border-radius: 4px; margin-bottom: 24px; }
+    .card h3 { font-family: 'Barlow Condensed'; font-size: 24px; text-transform: uppercase; color: #fff; margin-bottom: 4px; }
+    .list-item { border-left: 2px solid var(--acc); padding-left: 20px; margin-bottom: 30px; }
+    .role-title { font-weight: 700; color: #fff; font-size: 18px; }
+    .company { color: var(--acc-alt); font-size: 14px; margin-bottom: 10px; text-transform: uppercase; }
+    .muted-small { color: var(--text-muted); font-size: 14px; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 24px 0; text-align: center; color: var(--text-muted); font-size: 12px; }
+  </style>
 </head>
 <body>
-  <!-- NAVBAR -->
+
   <header class="navbar">
     <div class="container nav-inner">
-      <div style="display:flex;align-items:center;gap:12px">
-        <div class="brand" aria-hidden="true">
-          <div class="logo">CV</div>
-          <div style="color:var(--text-inverse)">
-            <div href="index.html" style="font-weight:700">Mi CV interactivo</div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.8)">Panel educativo</div>
-          </div>
+      <div class="brand">
+        <div class="logo">CV</div>
+        <div>
+          <div style="font-weight:700">Mi CV interactivo</div>
+          <div style="font-size:11px; color:var(--text-muted)">Panel educativo</div>
         </div>
       </div>
-
-      <nav class="nav-links" aria-label="Navegación rápida">
+      <nav class="nav-links">
         <a href="index.html">Perfil</a>
-        <a href="exp.html" class="active">Experiencia</a> <!-- 'active' aquí -->
-        <a href="portfolio.html">Portafolio</a> <!-- Enlace corregido y 'active' eliminado -->
-
+        <a href="exp.html" class="active">Experiencia</a>
+        <a href="portfolio.html">Portafolio</a>
       </nav>
     </div>
   </header>
-  
-  <!-- HERO -->
-  <section class="hero2 container" aria-labelledby="hero-title">
-   <div class="bg" style="
-   background: linear-gradient(
-    135deg,
-    #000000 20%,
-    #371211 40%,
-    #7D1416 60%,
-    #C0191F 70%,
-    #E51E1B 85%,
-    #000000 100%
-);"
-"></div>
 
-    <div class="hero-content container">
-      <div class="hero-grid">
-        <div class="hero-text">
-          <h1 id="hero-title">Experiencia Laboral</h1>
-          <p>Mi perfil laboral se basa en la exploración y aplicación de las tecnologías llamese robótica, impresión 3D, electrónica, seguridad electrónica, programación asistida por IA, diseño gráfico/3D, generación de videos, guías de usuario y mucho más.
-           <br> <br> Al explorar estos campos, puedo ofrecer soluciones creativas para las diferentes demandas que posea una empresa. </p>
+  <main class="hero container">
+    <h1>Experiencia Laboral</h1>
+    <p>Mi perfil se basa en la exploración y aplicación de tecnologías como robótica, impresión 3D, electrónica, seguridad electrónica y programación asistida por IA para ofrecer soluciones creativas.</p>
+
+    <section class="card">
+      <h3>Historial Profesional</h3>
+      <div style="margin-top:30px">
+        
+        <div class="list-item">
+          <div class="role-title">Técnico de soporte en seguridad electrónica</div>
+          <div class="company">SEKUNET S.A • 2025 - Presente</div>
+          <p class="muted-small">• Investigación de sistemas de seguridad electrónica.<br>• Mantenimiento preventivo y correctivo (Hardware/Software).<br>• Creación de guías técnicas y capacitación de personal.</p>
         </div>
-      </div> <!-- Cierra div.hero-grid -->
-    </div> <!-- Cierra div.hero-content -->
-  </section> <!-- Cierra section.hero2 -->
- 
 
-    
-  <!-- MAIN GRID (Ahora fuera del hero2 y con margen superior) -->
-  <main class="container" style="margin-top: var(--space-lg);">
-    <section class="cards-grid" aria-label="Contenido principal">
-      
-      <!-- La tarjeta de experiencia ahora abarcará todo el ancho de la cuadrícula -->
-      <div class="card col-12" id="experiencia" aria-labelledby="experiencia-title">
-          <h3 id="experiencia-title">Experiencia laboral</h3>
-          <div class="muted-small">Roles y responsabilidades destacadas</div>
-          
-          <div style="margin-top:12px">
-            <div class="list-item">
-              <div style="flex:1">
-                <div style="font-weight:700">Freelancer</div>
-                <div class="muted">Esc. Fray Jose Antonio de Liendo y Goicoechea • 2022-2024 - Presente</div>
-                <small class="muted-small">• Dar mantenimiento a las instalaciones técnológicas y explorar vías de mejora a plataformas digitales (incluye desarrollo de las mismas)<br> • Generar contenido multimedia para eventos especiales propios de la institución</small>
-              </div>
-            </div>
+        <div class="list-item">
+          <div class="role-title">Freelancer</div>
+          <div class="company">Esc. Fray Jose Antonio de Liendo y Goicoechea • 2022 - 2024</div>
+          <p class="muted-small">• Mantenimiento de infraestructura tecnológica y plataformas digitales.<br>• Desarrollo de herramientas y gestión de contenido multimedia.</p>
+        </div>
 
-            <div class="list-item">
-              <div style="flex:1">
-                <div style="font-weight:700">Técnico de soporte</div>
-                <div class="muted">HR Soluciones 2022 - 2023</div>
-                <small class="muted-small">• Investigación de plataformas para integración en herramientas de uso gratuito <br> • Revisión de equipos a nivel de software y hardware <br>• Reparación de equipos (Software / Hardware) <br>• Creación de contenido multimedia promocional o de guía sobre las tecnologías que maneja la empresa. <br>• Capacitación de personal técnico de clientes de la empresa.</small>
-              <div style="margin-top:12px">
-                <div style="flex:1">
-                <div style="font-weight:700">Técnico de soporte en seguridad electrónica</div>
-                <div class="muted">SEKUNET S.A • 2025 - Presente</div>
-                <small class="muted-small">• Investigación de sistemas de seguridad electrónica <br> • Revisión de equipos a nivel de software y hardware <br>• Reparación de equipos (Software / Hardware) <br>• Creación de contenido multimedia promocional o de guía sobre las tecnologías que maneja la empresa. <br>• Capacitación de personal técnico de clientes de la empresa.</small>
-              </div>
-            </div>
-          </div>
+        <div class="list-item">
+          <div class="role-title">Técnico de soporte</div>
+          <div class="company">HR Soluciones • 2022 - 2023</div>
+          <p class="muted-small">• Investigación de herramientas de integración de software libre.<br>• Soporte técnico integral y reparación de equipos.<br>• Creación de contenido promocional y capacitación técnica.</p>
+        </div>
+
       </div>
     </section>
   </main>
-            
-    <div class="container quick-actions">
-    <a class="quick-btn" href="index.html" title="Ir al perfil">
-      <div style="width:36px;height:36px;border-radius:8px;background:var(--color-primary-main);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">I</div>
-      <div>
-        <div style="font-weight:700">Volver al perfil</div>
-      </div>
-    </a>
 
-  <!-- FOOTER -->
   <footer>
-    <div class="container">
-      <div class="foot-row">
-        <p>© <strong>MiCV</strong> — Panel informativo</p>
-        <p class="muted-small">Diseñado con IA y personalizado con habilidad humana</p>
-      </div>
-    </div>
+    <div class="container">© 2026 — Panel informativo diseñado con IA</div>
   </footer>
 
-  <script>
-    // Script para resaltar el enlace activo en la navbar (solo para esta página)
-    document.addEventListener('DOMContentLoaded', () => {
-      const currentPath = window.location.pathname.split('/').pop();
-      const navLinks = document.querySelectorAll('.nav-links a');
-      navLinks.forEach(link => {
-        // Maneja casos donde el href podría ser "exp.html" o "index.html#experiencia"
-        const linkPath = link.getAttribute('href').split('/').pop().split('#')[0];
-        if (linkPath === currentPath) {
-          link.classList.add('active');
-        } else {
-          link.classList.remove('active');
-        }
-      });
-    });
-  </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
