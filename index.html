@@ -137,7 +137,6 @@
 
     /* --- ESTRUCTURA GRID PRINCIPAL --- */
     main.container { position: relative; z-index: 1; padding-bottom: 80px; }
-    /* Ajustado a 2 columnas principales debido a la remoción del bloque estático de contacto */
     .cards-grid {
       display: grid; grid-template-columns: 3.5fr 6.5fr; gap: 24px;
     }
@@ -190,7 +189,7 @@
     }
     .chip:hover { border-color: var(--acc-alt); background: rgba(0, 198, 255, 0.05); }
 
-    /* --- VENTANA EMERGENTE (MODAL CONTACTO) --- */
+    /* --- VENTANA EMERGENTE (MODALS) --- */
     .modal-overlay {
       position: fixed; inset: 0; background: rgba(5, 7, 10, 0.4);
       backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
@@ -198,7 +197,6 @@
       opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.2, 1, 0.3, 1);
       padding: 20px;
     }
-    /* Clase activa controlada por JS */
     .modal-overlay.active { opacity: 1; pointer-events: all; }
 
     .modal-card {
@@ -222,6 +220,37 @@
     .contact-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding: 12px 0; }
     .contact-row:last-child { border-bottom: none; padding-bottom: 0; }
     .contact-row .value { font-size: 14px; font-weight: 600; color: #fff; font-family: 'Barlow', sans-serif; }
+
+    /* --- BANNER DE BIENVENIDA ESPECÍFICO --- */
+    .welcome-overlay {
+      position: fixed; inset: 0; background: rgba(5, 7, 10, 0.5);
+      backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+      z-index: 2000; display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.5s ease;
+      padding: 20px;
+    }
+    .welcome-overlay.active { opacity: 1; pointer-events: all; }
+    
+    .welcome-card {
+      background: linear-gradient(145deg, #121622, #090b10);
+      border: 1px solid rgba(255, 106, 0, 0.2);
+      width: 100%; max-width: 500px; border-radius: 6px; padding: 40px 35px;
+      box-shadow: 0 0 30px rgba(255, 106, 0, 0.1), 0 25px 60px rgba(0,0,0,0.8);
+      position: relative; text-align: center;
+      transform: scale(0.9); transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    }
+    .welcome-overlay.active .welcome-card { transform: scale(1); }
+    
+    .welcome-card h2 {
+      font-family: 'Barlow Condensed'; font-size: 32px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 2px;
+      background: linear-gradient(135deg, var(--acc), var(--acc-alt));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 14px;
+    }
+    .welcome-card p {
+      color: var(--text); font-size: 15px; line-height: 1.6; margin-bottom: 28px;
+    }
 
     /* --- FOOTER --- */
     footer {
@@ -248,6 +277,18 @@
   </style>
 </head>
 <body>
+
+  <div class="welcome-overlay active" id="welcomeBanner">
+    <div class="welcome-card">
+      <button class="modal-close" id="closeWelcomeBtn">&times;</button>
+      <h2>¡Bienvenido a mi CV Virtual!</h2>
+      <p>Te invito cordialmente a explorar la sección de <strong>Portafolio</strong>, donde podrás auditar algunos de los proyectos lógicos, maquetas de integración y casos técnicos que he desarrollado a lo largo de mi trayectoria profesional.</p>
+      <div style="display: flex; gap: 12px; justify-content: center;">
+        <a href="portfolio.html" class="btn btn-primary" style="box-shadow: 0 0 15px var(--acc-glow);">Ir al Portafolio</a>
+        <button class="btn btn-ghost" id="exploreCvBtn">Explorar CV</button>
+      </div>
+    </div>
+  </div>
 
   <div class="bg-layer">
     <div class="bg-overlay"></div>
@@ -282,7 +323,7 @@
             <p>Profesional técnico con diferentes habilidades tecnológicas adquiridas por la demanda del momento, caracterizado por ser bastante flexible a la situación y un pensamiento creativo que se adapta según el requerimiento.</p>
 
             <div class="hero-cta" role="toolbar" aria-label="Acciones rápidas">
-            <a href="Certificados.html" class="btn btn-primary">Ver certificados</a>
+              <a href="Certificados.html" class="btn btn-primary">Ver certificados</a>
               <a href="portfolio.html" class="btn btn-ghost">Ver portafolio</a>
               <a href="exp.html" class="btn btn-ghost">Experiencia Laboral</a>
               <button class="btn" style="background:var(--acc-success); color:#fff" id="openContactBtn">Contacto</button>
@@ -317,7 +358,6 @@
           <h3 id="perfil-title">Información General</h3>
           <div class="profile">
             
-
             <div class="meta">
               <div class="name">Josseph Bolsios Cortés</div>
               <div class="role">Técnico en Soporte</div>
@@ -442,24 +482,40 @@
   <script src="script.js"></script>
   
   <script>
+    // Control de Modal de Contacto
     const openBtn = document.getElementById('openContactBtn');
     const closeBtn = document.getElementById('closeContactBtn');
     const modal = document.getElementById('contactModal');
 
-    // Abrir Modal
     openBtn.addEventListener('click', () => {
       modal.classList.add('active');
     });
 
-    // Cerrar Modal al tocar la "X"
     closeBtn.addEventListener('click', () => {
       modal.classList.remove('active');
     });
 
-    // Cerrar Modal al tocar fuera del contenedor de contacto
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
         modal.classList.remove('active');
+      }
+    });
+
+    // Control de Banner de Bienvenida (Parche solicitado)
+    const welcomeBanner = document.getElementById('welcomeBanner');
+    const closeWelcomeBtn = document.getElementById('closeWelcomeBtn');
+    const exploreCvBtn = document.getElementById('exploreCvBtn');
+
+    function closeWelcomeBanner() {
+      welcomeBanner.classList.remove('active');
+    }
+
+    closeWelcomeBtn.addEventListener('click', closeWelcomeBanner);
+    exploreCvBtn.addEventListener('click', closeWelcomeBanner);
+    
+    welcomeBanner.addEventListener('click', (e) => {
+      if (e.target === welcomeBanner) {
+        closeWelcomeBanner();
       }
     });
 
