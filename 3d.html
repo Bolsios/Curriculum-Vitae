@@ -25,24 +25,29 @@
       --max-w: 1140px;
     }
 
-    /* --- ESTILOS DE LA VENTANA EMERGENTE --- */
-    #overlay-msg {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000;
-      display: flex; align-items: center; justify-content: center; padding: 20px;
+    /* --- ESTILOS LIGHTBOX --- */
+    #lightbox {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 2000;
+      display: none; align-items: center; justify-content: center;
+      backdrop-filter: blur(8px); cursor: zoom-out;
     }
-    .msg-card {
-      background: var(--bg2); border: 1px solid var(--acc); padding: 30px;
-      max-width: 500px; border-radius: 4px; text-align: center;
+    #lightbox img { 
+      max-width: 90%; max-height: 90%; border: 2px solid var(--acc);
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
     }
+
+    /* --- TUS ESTILOS EXISTENTES --- */
+    body { font-family: 'Barlow', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; min-height: 100vh; }
+    .thumb-card { height: 90px; background: #000; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; cursor: pointer; transition: transform 0.2s; }
+    .thumb-card:hover { transform: scale(1.03); }
+    .thumb-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: opacity 0.3s; }
+    .thumb-card img:hover { opacity: 1; }
+    
+    /* (Mantén el resto de tus estilos aquí...) */
+    #overlay-msg { position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .msg-card { background: var(--bg2); border: 1px solid var(--acc); padding: 30px; max-width: 500px; border-radius: 4px; text-align: center; }
     .msg-card h3 { color: var(--acc); margin-bottom: 15px; font-family: 'Barlow Condensed'; }
-    .msg-card button { 
-      margin-top: 20px; background: var(--acc); border: none; padding: 10px 25px; 
-      cursor: pointer; font-weight: bold; border-radius: 2px;
-    }
-
-    body { font-family: 'Barlow', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; min-height: 100vh; line-height: 1.5; }
-
-    /* --- RESTO DE TUS ESTILOS --- */
+    .msg-card button { margin-top: 20px; background: var(--acc); border: none; padding: 10px 25px; cursor: pointer; font-weight: bold; border-radius: 2px; }
     .bg-layer { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
     .bg-overlay { position: absolute; inset: 0; background: radial-gradient(circle at 15% 15%, rgba(0, 198, 255, 0.07), transparent 45%), radial-gradient(circle at 85% 25%, rgba(255, 106, 0, 0.07), transparent 45%); }
     .bg-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px); background-size: 50px 50px; }
@@ -59,8 +64,6 @@
     canvas { display: block; width: 100%; height: 100%; cursor: grab; }
     .gallery-preview-title { font-family: 'Barlow Condensed'; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--acc); margin-top: 8px; }
     .thumb-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .thumb-card { height: 90px; background: #000; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
-    .thumb-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
     .description { background: var(--bg2); border: 1px solid var(--border); padding: 30px; border-radius: 4px; display: flex; flex-direction: column; gap: 18px; }
     .description h2 { font-family: 'Barlow Condensed'; font-weight: 800; font-size: 24px; text-transform: uppercase; color: #fff; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
     .description p { color: var(--text-muted); font-size: 15px; line-height: 1.6; }
@@ -72,10 +75,14 @@
 </head>
 <body>
 
+  <div id="lightbox" onclick="this.style.display='none'">
+    <img id="lightbox-img" src="" alt="Vista expandida">
+  </div>
+
   <div id="overlay-msg">
     <div class="msg-card">
       <h3>Instrucciones de interacción</h3>
-      <p>Puedes usar el mouse para interactuar con la figura 3D o, incluso, si ves la web desde el celular, puedes mover o ampliar con los gestos que usarías usualmente dentro de la ventana del visor 3D.</p>
+      <p>Puedes usar el mouse para interactuar con la figura 3D. Haz clic en las imágenes de abajo para verlas en detalle.</p>
       <button onclick="document.getElementById('overlay-msg').style.display='none'">ENTENDIDO</button>
     </div>
   </div>
@@ -101,43 +108,30 @@
 
       <div class="gallery-preview-title">Capturas de Impresión Real</div>
       <div class="thumb-grid">
-        <div class="thumb-card"><img src="Media/tank.jpg"></div>
-        <div class="thumb-card"><img src="Media/impresion.gif"></div>
-        <div class="thumb-card"><img src="Media/render_blender_3d.jpg"></div>
+        <div class="thumb-card"><img src="Media/tank.jpg" class="clickable"></div>
+        <div class="thumb-card"><img src="Media/impresion.gif" class="clickable"></div>
+        <div class="thumb-card"><img src="Media/render_blender_3d.jpg" class="clickable"></div>
       </div>
     </div>
     
     <section class="description">
       <h2>Ingeniería de Prototipado 3D</h2>
       <p>La integración de la fabricación aditiva dentro del flujo de trabajo técnico permite cerrar la brecha entre una necesidad identificada en campo y una solución física inmediata.</p>
-      
-      <div>
-        <h3>Hardware: Anycubic Kobra 2 NEO</h3>
-        <p>Operación y mantenimiento avanzado de hardware de impresión FDM. Dominio de parámetros críticos como retracción, nivelación automática y gestión térmica para asegurar piezas funcionales con alta fidelidad dimensional en materiales como PLA y PETG.</p>
-      </div>
-
-      <div>
-        <h3>Aplicación Técnica y Prototipado</h3>
-        <p>Más allá del pasatiempo, aplico este conocimiento en la creación de herramientas personalizadas para el área de seguridad electrónica: soportes a medida para cámaras, cajas de protección para dispositivos de red o piezas de despiece para mobiliario técnico. Cada impresión es validada previamente en plataformas de renderizado para asegurar su viabilidad estructural.</p>
-      </div>
-
-      <div>
-        <h3>Flujo de Trabajo Digital-Físico</h3>
-        <p>Sinergia entre el diseño en plataformas 3D y la ejecución en máquina. Este enfoque permite resolver problemas logísticos de piezas descatalogadas o mejorar la ergonomía de herramientas de instalación existentes, aportando un valor agregado único en el rol de soporte técnico de nivel superior.</p>
-      </div>
-
-      <div class="tech-tag-container">
-        <span class="tech-tag">Anycubic Kobra 2 NEO</span>
-        <span class="tech-tag">Impresión FDM</span>
-        <span class="tech-tag">Modelado STL</span>
-        <span class="tech-tag">Prototipado Funcional</span>
-        <span class="tech-tag">Diseño de Herramientas</span>
-        <span class="tech-tag">PLA / PETG Engineering</span>
-      </div>
     </section>
   </main>
 
   <script>
+    // --- Lógica del Lightbox ---
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    document.querySelectorAll('.clickable').forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+      });
+    });
+
+    // --- Tu código 3D existente ---
     const container = document.getElementById('viewer-3d');
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x05070a);
@@ -149,9 +143,7 @@
 
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
     const loader = new THREE.STLLoader();
-
     const stlUrl = 'Media/tanke.stl'; 
-
     loader.load(stlUrl, function (geometry) {
       const material = new THREE.MeshPhongMaterial({ color: 0x00c6ff, shininess: 100 });
       const mesh = new THREE.Mesh(geometry, material);
@@ -159,10 +151,8 @@
       mesh.rotation.x = -Math.PI / 2;
       scene.add(mesh);
     });
-
     scene.add(new THREE.DirectionalLight(0xffffff, 1));
     scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-
     function animate() {
       requestAnimationFrame(animate);
       renderer.render(scene, camera);
