@@ -104,6 +104,7 @@
     .video-switcher {
       display: flex;
       gap: 10px;
+      flex-wrap: wrap;
     }
     .switch-btn {
       font-family: 'Barlow Condensed';
@@ -283,7 +284,7 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       padding: 4px 10px;
-      background: rgba(255, 25 5, 255, 0.03);
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border);
       color: #fff;
       border-radius: 2px;
@@ -339,14 +340,25 @@
     
     <div class="media-wrapper">
       
+      <!-- Video Switcher con las URLs reales correspondientes -->
       <div class="video-switcher">
-        <button class="switch-btn active" onclick="switchVideo(this, 'URL_VIDEO_CAPACITACION_1')">Configuración de sistemas Intercom</button>
-        <button class="switch-btn" onclick="switchVideo(this, 'URL_VIDEO_CAPACITACION_2')">Capacitación de ambientes ZKTeco</button>
-        <button class="switch-btn" onclick="switchVideo(this, 'URL_VIDEO_CAPACITACION_3')">Lab: Interoperabilidad</button>
+        <button class="switch-btn active" onclick="switchVideo(this, 'https://www.youtube.com/embed/Tnb59qGxua0?si=xsHJqn9vKkh3ZsoT')">Configuración de sistemas Intercom</button>
+        <button class="switch-btn" onclick="switchVideo(this, 'https://www.youtube.com/embed/LgeE5mdCImY')">Capacitación de ambientes ZKTeco</button>
+        <button class="switch-btn" onclick="switchVideo(this, 'https://www.youtube.com/embed/Tnb59qGxua0')">Lab: Interoperabilidad</button>
       </div>
       
       <div class="video-container" aria-label="Reproductor de clases de entrenamiento">
-     <iframe width="560" height="315" src="https://www.youtube.com/embed/Tnb59qGxua0?si=xsHJqn9vKkh3ZsoT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe 
+          id="mainVideoPlayer"
+          width="560" 
+          height="315" 
+          src="https://www.youtube.com/embed/Tnb59qGxua0?si=xsHJqn9vKkh3ZsoT" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen>
+        </iframe>
       </div>
 
       <div class="gallery-preview-title">Galería de Talleres Presenciales (Presiona para ampliar)</div>
