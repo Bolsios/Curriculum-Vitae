@@ -100,38 +100,7 @@
       width: 100%;
     }
 
-    /* Conmutador de Canales de Video (Plataformas Remotas) */
-    .video-switcher {
-      display: flex;
-      gap: 10px;
-    }
-    .switch-btn {
-      font-family: 'Barlow Condensed';
-      font-weight: 600;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 8px 20px;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      cursor: pointer;
-      border-radius: 3px;
-      transition: all 0.25s ease;
-    }
-    .switch-btn:hover {
-      color: #fff;
-      border-color: rgba(255,255,255,0.2);
-    }
-    .switch-btn.active {
-      color: #090b10;
-      background: var(--acc-alt);
-      border-color: var(--acc-alt);
-      font-weight: 800;
-      box-shadow: 0 0 10px rgba(0, 198, 255, 0.3);
-    }
-
-    /* Contenedor del Video Principal */
+    /* Contenedor del Video Principal / Cambiado a Galería Principal Autodinámica */
     .video-container {
       border-radius: 4px;
       border: 1px solid var(--border);
@@ -141,13 +110,16 @@
       padding-bottom: 56.25%;
       height: 0;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      cursor: pointer;
     }
-    .video-container iframe {
+    .video-container img.gallery-dynamic-view {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
+      object-fit: cover;
       border: 0;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.4s ease;
+      opacity: 1;
     }
 
     /* Galería Auxiliar Inferior (Entornos de Escritorio Remoto) */
@@ -339,20 +311,12 @@
     
     <div class="media-wrapper">
       
-      <div class="video-switcher">
-        <button class="switch-btn active" onclick="switchVideo(this, 'URL_VIDEO_ANYDESK')">AnyDesk Core</button>
-        <button class="switch-btn" onclick="switchVideo(this, 'URL_VIDEO_ULTRAVIEWER')">UltraViewer Console</button>
-        <button class="switch-btn" onclick="switchVideo(this, 'URL_VIDEO_TEAMVIEWER')">TeamViewer Engine</button>
-      </div>
-      
-      <div class="video-container" aria-label="Reproductor de sesiones de soporte remoto">
-        <iframe 
-          id="mainVideoPlayer"
-          src="URL_VIDEO_ANYDESK" 
-          allow="autoplay; encrypted-media" 
-          allowfullscreen 
-          title="Video de interfaz de soporte remoto">
-        </iframe>
+      <div class="video-container" aria-label="Galería de imágenes autodinámica" onclick="openLightboxFromGallery()">
+        <img 
+          id="mainGalleryViewer" 
+          class="gallery-dynamic-view" 
+          src="Media/anydesk_sesion.jpg" 
+          alt="Galería dinámica de soporte remoto">
       </div>
 
       <div class="gallery-preview-title">Capturas de Diagnóstico en Tiempo Real (Presiona para ampliar)</div>
@@ -426,18 +390,33 @@
   </div>
 
   <script>
-    function switchVideo(button, videoUrl) {
-      const player = document.getElementById('mainVideoPlayer');
-      if (player.src === videoUrl) return;
+    // Configuración de la galería autodinámica automática
+    const images = [
+      "Media/anydesk_sesion.jpg",
+      "Media/rastreo_ip.jpg",
+      "Media/licencias_gestion.jpg"
+    ];
+    let currentIndex = 0;
+    const galleryViewer = document.getElementById('mainGalleryViewer');
 
-      player.style.opacity = 0;
+    function autoPlayGallery() {
+      currentIndex = (currentIndex + 1) % images.length;
+      galleryViewer.style.opacity = 0;
+      
       setTimeout(() => {
-        player.src = videoUrl;
-        player.style.opacity = 1;
-      }, 200);
+        galleryViewer.src = images[currentIndex];
+        galleryViewer.style.opacity = 1;
+      }, 400); // Duración de desvanecimiento suave
+    }
 
-      document.querySelectorAll('.switch-btn').forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
+    // Cambia de imagen automáticamente cada 4 segundos
+    let galleryInterval = setInterval(autoPlayGallery, 4000);
+
+    function openLightboxFromGallery() {
+      const modal = document.getElementById('lightbox');
+      const modalImg = document.getElementById('lightboxImg');
+      modalImg.src = galleryViewer.src;
+      modal.classList.add('open');
     }
 
     function openLightbox(cardElement) {
