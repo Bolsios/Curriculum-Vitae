@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Josseph Steven Bolsios Cortés</title>
+  <title>Galería de Certificaciones — Josseph Steven Bolsios Cortés</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;600;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
   
   <style>
@@ -14,7 +14,6 @@
       --acc: #ff6a00; 
       --acc-alt: #00c6ff;
       --acc-glow: rgba(255, 106, 0, 0.25);
-      --acc-success: #10b981;
       --bg: #090b10;
       --bg2: #12161f;
       --border: rgba(255, 255, 255, 0.06);
@@ -81,152 +80,115 @@
     }
     nav.nav-links a:hover { color: #fff; background: rgba(255,255,255,0.05); }
 
-    /* --- HERO --- */
-    .hero {
-      position: relative; z-index: 1; padding-top: calc(var(--nav-h) + 40px); margin-bottom: 30px;
+    /* --- TITULO DE LA GALERÍA --- */
+    .gallery-header {
+      padding-top: calc(var(--nav-h) + 40px);
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
     }
-    .hero-bg-wrapper {
-      position: relative; border: 1px solid var(--border); overflow: hidden; border-radius: 4px;
-      background: #11141c;
+    .gallery-header h1 {
+      font-family: 'Barlow Condensed';
+      font-weight: 800;
+      font-size: 32px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #fff;
     }
-    .hero .bg {
-      position: absolute; inset: 0; opacity: 0.12; filter: blur(40px); transform: scale(1.1);
-    }
-    .hero-content {
-      position: relative; z-index: 2; padding: 45px 35px;
-    }
-    .hero-grid {
-      display: grid; grid-template-columns: 1fr 340px; gap: 40px; align-items: center;
-    }
-    
-    .hero-text h1 {
-      font-family: 'Barlow Condensed'; font-size: clamp(32px, 5vw, 48px);
-      font-weight: 800; text-transform: uppercase; letter-spacing: 1px; line-height: 1; margin-bottom: 12px;
-    }
-    .hero-text p { color: var(--text-muted); font-size: 15px; max-width: 620px; margin-bottom: 25px; }
-
-    /* Botones */
-    .hero-cta { display: flex; flex-wrap: wrap; gap: 10px; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      font-family: 'Barlow Condensed'; font-weight: 600; font-size: 14px;
-      text-transform: uppercase; letter-spacing: 1px; padding: 10px 22px;
-      border: 1px solid transparent; border-radius: 4px; cursor: pointer;
-      text-decoration: none; transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
-    }
-    .btn-primary { background: var(--acc); color: #000; }
-    .btn-primary:hover { background: #ff7b1c; transform: translateY(-2px); }
-    .btn-ghost { background: rgba(255,255,255,0.03); border-color: var(--border); color: var(--text); }
-    .btn-ghost:hover { background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.2); }
-
-    /* Tarjeta Flotante Derecha */
-    .hero-card {
-      background: rgba(18, 22, 31, 0.8); border: 1px solid rgba(255,255,255,0.05);
-      padding: 24px; border-radius: 4px; display: flex; align-items: center; gap: 20px;
-      backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-    .hero-avatar { width: 72px; height: 72px; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); background: #222; flex-shrink: 0; }
-    .hero-avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .hero-card .muted { font-size: 13px; color: var(--acc-alt); font-weight: 500; }
-    
-    .badge {
-      font-family: 'Barlow Condensed'; font-size: 11px; font-weight: 600; text-transform: uppercase;
-      letter-spacing: 0.5px; padding: 2px 10px; background: rgba(255,255,255,0.06);
-      border: 1px solid var(--border); color: var(--text-muted); border-radius: 2px;
+    .gallery-header p {
+      color: var(--text-muted);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--acc-alt);
+      margin-top: 2px;
     }
 
-    /* --- ESTRUCTURA GRID PRINCIPAL --- */
-    main.container { position: relative; z-index: 1; padding-bottom: 80px; }
-    /* Ajustado a 2 columnas principales debido a la remoción del bloque estático de contacto */
-    .cards-grid {
-      display: grid; grid-template-columns: 3.5fr 6.5fr; gap: 24px;
+    /* --- CUADRÍCULA DE LA GALERÍA --- */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 60px;
     }
 
-    /* Estructura Base de Tarjetas */
-    .card {
-      background: var(--bg2); border: 1px solid var(--border); padding: 26px;
-      border-radius: 4px; height: fit-content; transition: border-color 0.3s;
-    }
-    .card:hover { border-color: rgba(255,255,255,0.12); }
-    
-    .card h3 {
-      font-family: 'Barlow Condensed'; font-size: 18px; font-weight: 800;
-      text-transform: uppercase; letter-spacing: 1.5px; color: #fff;
-      margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between;
-    }
-    .muted-small { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; display: block; }
-    .muted { color: var(--text-muted); font-size: 14px; }
-
-    /* --- COLUMNA IZQUIERDA: PERFIL --- */
-    .profile { display: flex; flex-direction: column; gap: 16px; }
-    .profile .photo { width: 100%; height: 160px; overflow: hidden; border-radius: 4px; border: 1px solid var(--border); }
-    .profile .photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.2); }
-    
-    .profile .meta .name { font-family: 'Barlow Condensed'; font-size: 22px; font-weight: 800; text-transform: uppercase; }
-    .profile .meta .role { font-size: 14px; color: var(--acc); font-weight: 500; }
-    .profile .meta .muted { font-size: 13px; }
-
-    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 4px; }
-    .small-card { padding: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 4px; }
-    .small-card .value { font-family: 'Barlow Condensed'; font-size: 20px; font-weight: 800; color: #fff; margin-top: 2px; }
-
-    /* --- COLUMNA CENTRAL: ESTUDIOS --- */
-    .list-item {
-      padding: 16px 0; border-bottom: 1px solid var(--border);
+    .thumb-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+      position: relative;
+      opacity: 0;
       animation: fadeUp 0.6s ease both;
     }
-    .list-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .list-item:first-of-type { padding-top: 4px; }
-    .list-item h4 { font-size: 15px; font-weight: 700; color: #fff; }
-    .list-item .institution { font-size: 13px; color: var(--acc-alt); margin: 2px 0 6px; font-weight: 500; }
-    .list-item small { display: block; font-size: 13px; color: var(--text-muted); line-height: 1.4; }
-
-    /* --- CHIPS DE COMPETENCIAS --- */
-    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-    .chip {
-      font-size: 12px; padding: 5px 12px; background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border); color: var(--text); border-radius: 2px;
-      transition: .2s;
+    .thumb-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.8;
+      transition: all 0.3s ease;
     }
-    .chip:hover { border-color: var(--acc-alt); background: rgba(0, 198, 255, 0.05); }
+    .thumb-card:hover {
+      border-color: var(--acc);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(255, 106, 0, 0.15);
+    }
+    .thumb-card:hover img {
+      opacity: 1;
+      transform: scale(1.02);
+    }
 
-    /* --- VENTANA EMERGENTE (MODAL CONTACTO) --- */
-    .modal-overlay {
-      position: fixed; inset: 0; background: rgba(5, 7, 10, 0.4);
-      backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-      z-index: 1000; display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+    /* --- SISTEMA LIGHTBOX MODAL --- */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 7, 10, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
       padding: 20px;
     }
-    /* Clase activa controlada por JS */
-    .modal-overlay.active { opacity: 1; pointer-events: all; }
-
-    .modal-card {
-      background: #11141c; border: 1px solid rgba(255,255,255,0.1);
-      width: 100%; max-width: 420px; border-radius: 6px; padding: 30px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.6); position: relative;
-      transform: translateY(20px); transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+    .lightbox-modal.open {
+      opacity: 1;
+      pointer-events: auto;
     }
-    .modal-overlay.active .modal-card { transform: translateY(0); }
-
-    .modal-card h3 {
-      font-family: 'Barlow Condensed'; font-size: 24px; font-weight: 800;
-      text-transform: uppercase; letter-spacing: 1.5px; color: #fff; margin-bottom: 20px;
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 85vh;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+      border-radius: 4px;
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
     }
-    .modal-close {
-      position: absolute; top: 18px; right: 20px; background: none; border: none;
-      color: var(--text-muted); font-size: 24px; cursor: pointer; transition: color 0.2s;
+    .lightbox-modal.open .lightbox-content {
+      transform: scale(1);
     }
-    .modal-close:hover { color: var(--acc); }
-
-    .contact-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding: 12px 0; }
-    .contact-row:last-child { border-bottom: none; padding-bottom: 0; }
-    .contact-row .value { font-size: 14px; font-weight: 600; color: #fff; font-family: 'Barlow', sans-serif; }
+    .lightbox-close {
+      position: absolute;
+      top: 24px; right: 24px;
+      background: none; border: none;
+      color: #fff; font-size: 36px; cursor: pointer;
+      line-height: 1; opacity: 0.6; transition: opacity 0.25s;
+    }
+    .lightbox-close:hover { opacity: 1; color: var(--acc); }
 
     /* --- FOOTER --- */
     footer {
       border-top: 1px solid var(--border); padding: 24px 0; background: #07090d;
-      position: relative; z-index: 1; font-size: 13px;
+      position: relative; z-index: 1; font-size: 13px; margin-top: auto;
     }
     .foot-row { display: flex; justify-content: space-between; align-items: center; }
 
@@ -238,18 +200,85 @@
 
     /* --- RESPONSIVO --- */
     @media (max-width: 960px) {
-      .cards-grid { grid-template-columns: 1fr; gap: 24px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
     }
     @media (max-width: 640px) {
       .nav-links { display: none; }
+      .gallery-grid { grid-template-columns: 1fr; gap: 16px; }
       .foot-row { flex-direction: column; gap: 8px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  
+  <div class="bg-layer">
+    <div class="bg-overlay"></div>
+    <div class="bg-grid"></div>
+  </div>
+
+  <header class="navbar" role="banner">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="logo">CV</div>
+        <div>
+          <div class="brand-text-main">Josseph Steven Bolsios Cortés</div>
+          <div class="brand-text-sub">Expediente de Acreditaciones Técnicas</div>
+        </div>
+      </div>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="index.html">Volver al Perfil</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container gallery-header">
+    <h1>Galería de Títulos y Certificaciones</h1>
+    <p>Acreditaciones en Seguridad Electrónica, Redes y Formación Académica</p>
+  </div>
+
+  <main class="container gallery-grid" role="main">
+    
+    <div class="thumb-card" onclick="openLightbox(this)">
+      <img src="Media/Bachi.jpg" alt="Bachiller en Educación Media - Liceo Braulio Carrillo Colina">
+    </div>
+
+    <div class="thumb-card" onclick="openLightbox(this)">
+      <img src="Media/hik.png" alt="Hikvision Certified Security Associate - HCSA Security CCTV & Intercom">
+    </div>
+
+    <div class="thumb-card" onclick="openLightbox(this)">
+      <img src="Media/intro.png" alt="Cisco Networking Academy - Introduction to Cybersecurity">
+    </div>
+
+    <div class="thumb-card" onclick="openLightbox(this)">
+      <img src="Media/soni 1.jpg" alt="SoniVisión S.A. - Fundamentos CCTV Especificaciones Nivel 1">
+    </div>
+
+    <div class="thumb-card" onclick="openLightbox(this)">
+      <img src="Media/soni 2.jpg" alt="SoniVisión S.A. - Fundamentos de la Seguridad Humana y Protección Contra Incendios">
+    </div>
+
+    <div class="thumb-card" onclick="openLightbox(this)">
+      <img src="Media/unifi.jpg" alt="Ubiquiti Academy Certification - UNP UniFi Network Professional">
+    </div>
+
+    <div class="thumb-card" onclick="openLightbox(this)">
+      <img src="Media/WhatsApp Image 2026-05-31 at 1.35.26 AM.jpeg" alt="ZKTeco Centroamérica - Solución de Control de Acceso con Software basados en Web Bio ZLink y SenseFace Series">
+    </div>
+
+    <div class="thumb-card" onclick="openLightbox(this)">
+      <img src="Media/WhatsApp Image 2026-05-31 at 1.35.26 AM (1).jpeg" alt="ZKTeco Centroamérica - Solución de Gestión de Acceso Vehicular">
+    </div>
+
+    <div class="thumb-card" onclick="openLightbox(this)">
+      <img src="Media/WhatsApp Image 2026-05-31 at 1.35.26 AM (2).jpeg" alt="ZKTeco Centroamérica - Soluciones Integrales de Tiempo & Asistencia Integradas con Software de ZKTeco">
+    </div>
+
+    <div class="thumb-card" onclick="openLightbox(this)">
+      <img src="Media/WhatsApp Image 2026-05-31 at 1.35.27 AM.jpeg" alt="ZKTeco Centroamérica - Soluciones Integrales de Control de Acceso Integradas con Software de ZKTeco">
+    </div>
+
+  </main>
 
   <footer>
     <div class="container">
@@ -260,33 +289,31 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
-  
+  <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
+    <button class="lightbox-close">&times;</button>
+    <img id="lightboxImg" class="lightbox-content" src="" alt="Vista ampliada de la certificación">
+  </div>
+
   <script>
-    const openBtn = document.getElementById('openContactBtn');
-    const closeBtn = document.getElementById('closeContactBtn');
-    const modal = document.getElementById('contactModal');
+    function openLightbox(cardElement) {
+      const modal = document.getElementById('lightbox');
+      const modalImg = document.getElementById('lightboxImg');
+      const targetImgSrc = cardElement.querySelector('img').src;
+      const targetImgAlt = cardElement.querySelector('img').alt;
 
-    // Abrir Modal
-    openBtn.addEventListener('click', () => {
-      modal.classList.add('active');
-    });
+      modalImg.src = targetImgSrc;
+      modalImg.alt = targetImgAlt;
+      modal.classList.add('open');
+    }
 
-    // Cerrar Modal al tocar la "X"
-    closeBtn.addEventListener('click', () => {
-      modal.classList.remove('active');
-    });
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox');
+      modal.classList.remove('open');
+    }
 
-    // Cerrar Modal al tocar fuera del contenedor de contacto
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.remove('active');
-      }
-    });
-
-    // Stagger para los estudios
-    document.querySelectorAll('.list-item').forEach((el, i) => {
-      el.style.animationDelay = (i * 0.08) + 's';
+    // Efecto Stagger para que las tarjetas de la galería aparezcan escalonadas de forma fluida
+    document.querySelectorAll('.thumb-card').forEach((el, i) => {
+      el.style.animationDelay = (i * 0.05) + 's';
     });
   </script>
 </body>
